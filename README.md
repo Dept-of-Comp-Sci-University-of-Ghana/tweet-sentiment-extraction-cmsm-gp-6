@@ -1,1 +1,10 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/rBRzfPCb)
+In our approach, we begin by preprocessing the text data to ensure consistency and remove irrelevant information. We tokenize the text, convert it to lowercase, remove stopwords and punctuation, and perform lemmatization to reduce words to their base form. These preprocessing steps help standardize the text data and remove unnecessary noise.
+
+Next, we train a sentiment analysis model using the training data. This data consists of the text and sentiment labels. We choose a Support Vector Classifier (SVC) with a linear kernel, known for its effectiveness in text classification tasks. We transform the text data using the TfidfVectorizer, which converts the text into numerical feature vectors. These vectors capture the importance of each word in the text.
+
+Once the sentiment analysis model is trained, we can use it to extract sentiment words or phrases from new text data. Our extract_sentiment_word_or_phrase function takes a text input, predicts its sentiment using the trained model, and extracts sentiment words or phrases based on the predicted sentiment. If the predicted sentiment matches the expected sentiment, we identify sentiment words or phrases by comparing the tokens in the text with the feature names from the vectorizer.
+
+Finally, we save the extracted sentiment words or phrases to a CSV file for further analysis or evaluation. The results include the text ID and the selected sentiment text. By iterating over the test data and applying the sentiment extraction function, we generate the desired output.
+
+In summary, our approach involves preprocessing the text data, training a sentiment analysis model, extracting sentiment words or phrases, and saving the results to a CSV file. 

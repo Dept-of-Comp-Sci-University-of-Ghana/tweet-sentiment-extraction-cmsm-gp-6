@@ -1,17 +1,17 @@
+# import necessary packages
 import pandas as pd
 import numpy as np
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import SVC
-import joblib
 
 # Preprocessing and Feature Extraction
 
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
-
 
 def preprocess_text(text):
     if isinstance(text, str):  # Check if the value is a string
@@ -89,10 +89,6 @@ y_train = np.array(y_train)
 # Train sentiment analysis model
 sentiment_model, vectorizer = train_sentiment_analysis_model(X_train, y_train)
 
-# Save the trained model and vectorizer
-joblib.dump(sentiment_model, 'sentiment_model.pkl')
-joblib.dump(vectorizer, 'vectorizer.pkl')
-
 # Test the model on test data and save the results to CSV
 results = []
 correct_predictions = 0
@@ -102,4 +98,4 @@ for text_id, text, sentiment in zip(test_text_id_column, test_text_column, test_
     results.append({'textID': text_id, 'selected_text': sentiment_word_or_phrase})
 
 results_df = pd.DataFrame(results)
-results_df.to_csv('sentiment_extraction_results.csv', index=False)
+results_df.to_csv('submission.csv', index=False)
